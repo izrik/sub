@@ -15,6 +15,10 @@ namespace sub
             int y;
             int z;
 
+            if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
+            if (miny > maxy) { y = miny; miny = maxy; maxy = y; }
+            if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
+
             for (x = minx; x <= maxx; x++)
             {
                 for (z = minz; z <= maxz; z++)
@@ -36,6 +40,10 @@ namespace sub
             int x;
             int y;
             int z;
+
+            if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
+            if (miny > maxy) { y = miny; miny = maxy; maxy = y; }
+            if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
 
             for (x = minx; x <= maxx; x++)
             {
@@ -68,6 +76,10 @@ namespace sub
             int x;
             int y;
             int z;
+
+            if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
+            if (miny > maxy) { y = miny; miny = maxy; maxy = y; }
+            if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
 
             for (x = minx; x <= maxx; x++)
             {
