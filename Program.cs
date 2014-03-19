@@ -39,6 +39,9 @@ namespace sub
                      _options.WriteOptionDescriptions(Console.Out);
                      Console.WriteLine();
                 };
+                commander.Commands.Add(Commands.ClearCommand.Name, Commands.ClearCommand);
+                commander.Commands.Add(Commands.FillCommand.Name, Commands.FillCommand);
+
 
                 if (showVersion)
                 {
