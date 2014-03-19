@@ -21,7 +21,7 @@ namespace sub
                 return int.Parse(arg);
             },
             description: "The name or number of a kind of block, e.g., air, stone, dirt",
-            helpText: "The available block types are:\r\nr\n" + 
+            helpText: "The available block types are:\r\n\r\n" + 
                 string.Join(
                     "\r\n", 
                     BlockTypesByName._BlockTypesByName.Keys.Select(
