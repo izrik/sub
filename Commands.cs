@@ -282,6 +282,71 @@ namespace sub
                     world.Save();
                 }
             };
+
+        public static readonly Command MathCommand =
+            new Command {
+                 Name = "math",
+                 Description = "Generate terrain using a mathematical expression",
+                 HelpText = "Generate terrain using a mathematical expression",
+                 Params = new [] {
+                     new Command.CommandParam{ Name = "world", ParamType = Command.ParamType.World },
+                     new Command.CommandParam{ Name = "minx", ParamType = Command.ParamType.Int },
+                     new Command.CommandParam{ Name = "maxx", ParamType = Command.ParamType.Int },
+                     new Command.CommandParam{ Name = "minz", ParamType = Command.ParamType.Int },
+                     new Command.CommandParam{ Name = "maxz", ParamType = Command.ParamType.Int },
+                     new Command.CommandParam{ Name = "block_type", ParamType = Command.ParamType.BlockType },
+                     new Command.CommandParam{ Name = "expr", ParamType = Command.ParamType.String },
+                 },
+                 ExecuteDelegate = args =>
+                 {
+
+                     AnvilWorld world = (AnvilWorld)(args[0]);
+                     int minx = (int)(args[1]);
+                     int maxx = (int)(args[2]);
+                     int minz = (int)(args[3]);
+                     int maxz = (int)(args[4]);
+                     int blockType = (int)(args[5]);
+                     var exprs = (string)(args[6]);
+
+                     var parser = new SolusParser();
+                     var env = new SolusEnvironment();
+                     var expr = parser.GetExpression(exprs, env);
+
+                     int x;
+                     int y;
+                     int z;
+
+                     if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
+                     if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
+
+                     env.Variables["x"] = new Literal(0);
+                     env.Variables["z"] = new Literal(0);
+
+                     BlockManager bm = world.GetBlockManager();
+
+                     for (x = minx; x <= maxx; x++)
+                     {
+                         ((Literal)(env.Variables["x"])).Value = x;
+                         for (z = minz; z <= maxz; z++)
+                         {
+                             ((Literal)(env.Variables["z"])).Value = z;
+
+                             int maxy = (int)Math.Ceiling(expr.Eval(env).Value);
+
+                             for (y = 0; y <= maxy; y++)
+                             {
+                                 bm.SetID(x, y, z, blockType);
+                             }
+                         }
+                     }
+
+                     world.Save();
+                 }
+            };
+
+
+
+
     }
 }
 
