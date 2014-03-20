@@ -67,7 +67,15 @@ namespace sub
 
                     BlockManager bm = world.GetBlockManager();
 
-                    bm.FillSpace(minx, maxx, miny, maxy, minz, maxz, blockType);
+                    if (args.ContainsKey("data"))
+                    {
+                        int data = (int)(args["data"]);
+                        bm.FillSpace(minx, maxx, miny, maxy, minz, maxz, blockType, data);
+                    }
+                    else
+                    {
+                        bm.FillSpace(minx, maxx, miny, maxy, minz, maxz, blockType);
+                    }
 
                     world.Save();
                 }
