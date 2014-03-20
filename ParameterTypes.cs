@@ -9,7 +9,7 @@ namespace sub
     public static class ParameterTypes
     {
         public static readonly ParameterType BlockType = new ParameterType(
-            name: "BlockType",
+            name: "block_type",
             convertAction: arg =>
             {
                 arg = arg.ToLower();
@@ -30,7 +30,7 @@ namespace sub
         );
 
         public static readonly ParameterType World = new ParameterType(
-            name: "World",
+            name: "world",
             convertAction: AnvilWorld.Open,
             description: "The path of a folder containing a world's data files",
             outputType: typeof(AnvilWorld)
