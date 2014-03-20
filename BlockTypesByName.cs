@@ -13,7 +13,6 @@ namespace sub
         {
             var type = typeof(BlockType);
             var fields = type.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static);
-            Console.WriteLine("Found {0} fields", fields.Length);
             foreach (var field in fields)
             {
                 var value = (int)field.GetValue(null);

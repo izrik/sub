@@ -37,8 +37,8 @@
     <Compile Include="NDesk.Options.cs" />
     <Compile Include="BlockManagerHelper.cs" />
     <Compile Include="ParameterTypes.cs" />
-    <Compile Include="BlockTypesByNames.cs" />
     <Compile Include="Commands.cs" />
+    <Compile Include="BlockTypesByName.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
