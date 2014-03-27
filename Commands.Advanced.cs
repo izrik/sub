@@ -77,6 +77,7 @@ namespace sub
                     world.Save();
                 }
             };
+
         public static readonly Command TorchGridCommand = 
             new Command {
                 Name = "torch_grid",
@@ -143,7 +144,6 @@ namespace sub
             public int Y;
             public int Z;
         }
-
         public static readonly Command DisruptCommand =
             new Command {
                 Name = "disrupt",
