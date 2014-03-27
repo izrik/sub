@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sub", "sub.csproj", "{F09B9076-2D15-4DD3-AB11-7D06BF939C76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Substrate (NET4)", "..\Substrate\SubstrateCS\Substrate (NET4).csproj", "{7264A1C4-AB4A-4437-B252-7379B98B5509}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCommander", "..\NCommander\NCommander.csproj", "{A9E25E5D-EB90-4B4A-8793-4E9D97037E42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Substrate (NET4)", "Substrate\SubstrateCS\Substrate (NET4).csproj", "{7264A1C4-AB4A-4437-B252-7379B98B5509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
