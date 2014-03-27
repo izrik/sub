@@ -391,10 +391,10 @@ namespace sub
                 }
             };
 
-        public static readonly Command ShowXYCommand =
+        public static readonly Command SliceXYCommand =
             new Command {
-                Name = "show_xy",
-                Description = "Show the block id's of a region",
+                Name = "slice_xy",
+                Description = "Show the block id's of a slice",
                 Params = new [] {
                     new Parameter{ Name = "world", ParameterType = ParameterTypes.World },
                     new Parameter{ Name = "minx",  ParameterType = ParameterType.Integer },
