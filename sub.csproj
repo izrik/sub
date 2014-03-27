@@ -39,6 +39,8 @@
     <Compile Include="ParameterTypes.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="BlockTypesByName.cs" />
+    <Compile Include="Commands.Slice.cs" />
+    <Compile Include="Commands.Advanced.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
