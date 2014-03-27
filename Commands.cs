@@ -1,6 +1,8 @@
 ﻿using System;
 using NCommander;
 using Substrate;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace sub
 {
@@ -276,6 +278,95 @@ namespace sub
 
                             bm.SetID(x, y, z, BlockType.TORCH);
                             bm.SetData(x, y, z, (int)TorchOrientation.FLOOR);
+                        }
+                    }
+
+                    world.Save();
+                }
+            };
+
+        struct Point
+        {
+            public Point(int x, int y, int z)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+            }
+
+            public int X;
+            public int Y;
+            public int Z;
+        }
+        public static readonly Command DisruptCommand =
+            new Command {
+                Name = "disrupt",
+                Description = "The matter disrupter, a.k.a. the \"Little Doctor\"",
+                //          12345678901234567890123456789012345678901234567890123456789012345678901234567890
+                HelpText = "All connected blocks will be cleared. The disruptor starts at the given point " +
+                    "and starts deleting blocks. The process then 'spreads' to adjacent blocks, which are " +
+                    "deleted. It continues in this way, and any connected blocks that are not air continue " +
+                    "the reaction, until there are no more blocks left. A bounding region is required, so " +
+                    "that the reaction doesn't consume the entire world.",
+                Params = new [] {
+                    new Parameter{ Name = "world", ParameterType = ParameterTypes.World },
+                    new Parameter{ Name = "sx", ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "sy", ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "sz", ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "minx",  ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "maxx",  ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "miny",  ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "maxy",  ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "minz",  ParameterType = ParameterType.Integer },
+                    new Parameter{ Name = "maxz",  ParameterType = ParameterType.Integer },
+                },
+                ExecuteDelegate = args =>
+                {
+                    AnvilWorld world = (AnvilWorld)(args["world"]);
+                    int sx = (int)(args["sx"]);
+                    int sy = (int)(args["sy"]);
+                    int sz = (int)(args["sz"]);
+                    int minx = (int)(args["minx"]);
+                    int maxx = (int)(args["maxx"]);
+                    int miny = (int)(args["miny"]);
+                    int maxy = (int)(args["maxy"]);
+                    int minz = (int)(args["minz"]);
+                    int maxz = (int)(args["maxz"]);
+
+                    int x;
+                    int y;
+                    int z;
+
+                    miny = Math.Max(Math.Min(miny, 255), 0);
+                    maxy = Math.Max(Math.Min(maxy, 255), 0);
+
+                    if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
+                    if (miny > maxy) { y = miny; miny = maxy; maxy = y; }
+                    if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
+
+                    BlockManager bm = world.GetBlockManager();
+
+                    var q = new Queue<Point>();
+                    q.Enqueue(new Point(sx, sy, sz));
+
+                    while (q.Count > 0)
+                    {
+                        var pt = q.Dequeue();
+                        x = pt.X;
+                        y = pt.Y;
+                        z = pt.Z;
+                        if (x >= minx && x <= maxx &&
+                            y >= miny && y <= maxy &&
+                            z >= minz && z <= maxz &&
+                            bm.GetID(x ,y, z) != BlockType.AIR)
+                        {
+                            bm.SetID(x, y, z, BlockType.AIR);
+                            q.Enqueue(new Point(x+1,y,z));
+                            q.Enqueue(new Point(x-1,y,z));
+                            q.Enqueue(new Point(x,y+1,z));
+                            q.Enqueue(new Point(x,y-1,z));
+                            q.Enqueue(new Point(x,y,z+1));
+                            q.Enqueue(new Point(x,y,z-1));
                         }
                     }
 
