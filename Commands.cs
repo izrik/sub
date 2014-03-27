@@ -8,6 +8,16 @@ namespace sub
 {
     public class Commands
     {
+        public static void SwapMinMax(ref int min, ref int max)
+        {
+            if (min > max)
+            {
+                int temp = min;
+                min = max;
+                max = temp;
+            }
+        }
+
         public static readonly Command ClearCommand = 
             new Command {
                 Name = "clear",
@@ -197,6 +207,10 @@ namespace sub
                     int maxz = cz + radius;
                     int r2 = radius * radius;
 
+                    SwapMinMax(ref minx, ref maxx);
+                    SwapMinMax(ref miny, ref maxy);
+                    SwapMinMax(ref minz, ref maxz);
+
                     int x;
                     int y;
                     int z;
@@ -260,6 +274,9 @@ namespace sub
                     int minz = (int)(args["minz"]);
                     int maxz = (int)(args["maxz"]);
                     int modz = (int)(args["modz"]);
+
+                    SwapMinMax(ref minx, ref maxx);
+                    SwapMinMax(ref minz, ref maxz);
 
                     BlockManager bm = world.GetBlockManager();
 
@@ -340,9 +357,9 @@ namespace sub
                     miny = Math.Max(Math.Min(miny, 255), 0);
                     maxy = Math.Max(Math.Min(maxy, 255), 0);
 
-                    if (minx > maxx) { x = minx; minx = maxx; maxx = x; }
-                    if (miny > maxy) { y = miny; miny = maxy; maxy = y; }
-                    if (minz > maxz) { z = minz; minz = maxz; maxz = z; }
+                    SwapMinMax(ref minx, ref maxx);
+                    SwapMinMax(ref miny, ref maxy);
+                    SwapMinMax(ref minz, ref maxz);
 
                     BlockManager bm = world.GetBlockManager();
 
