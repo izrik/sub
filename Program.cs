@@ -50,6 +50,7 @@ namespace sub
                     Commands.DisruptCommand,
                     Commands.SliceXYCommand,
                     Commands.MapCommand,
+                    Commands.HeightMapCommand,
                 };
 
                 foreach (var command in commands)
