@@ -41,6 +41,7 @@
     <Compile Include="BlockTypesByName.cs" />
     <Compile Include="Commands.Slice.cs" />
     <Compile Include="Commands.Advanced.cs" />
+    <Compile Include="Commands.Map.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -48,6 +48,7 @@ namespace sub
                 commander.Commands.Add(Commands.TorchGridCommand.Name, Commands.TorchGridCommand);
                 commander.Commands.Add(Commands.DisruptCommand.Name, Commands.DisruptCommand);
                 commander.Commands.Add(Commands.SliceXYCommand.Name, Commands.SliceXYCommand);
+                commander.Commands.Add(Commands.MapCommand.Name, Commands.MapCommand);
 
 
                 if (showVersion)
