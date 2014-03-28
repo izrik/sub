@@ -40,16 +40,22 @@ namespace sub
                      Console.WriteLine();
                 };
 
-                commander.Commands.Add(Commands.ClearCommand.Name, Commands.ClearCommand);
-                commander.Commands.Add(Commands.FillCommand.Name, Commands.FillCommand);
-                commander.Commands.Add(Commands.SetDataCommand.Name, Commands.SetDataCommand);
-                commander.Commands.Add(Commands.ReplaceCommand.Name, Commands.ReplaceCommand);
-                commander.Commands.Add(Commands.SphereCommand.Name, Commands.SphereCommand);
-                commander.Commands.Add(Commands.TorchGridCommand.Name, Commands.TorchGridCommand);
-                commander.Commands.Add(Commands.DisruptCommand.Name, Commands.DisruptCommand);
-                commander.Commands.Add(Commands.SliceXYCommand.Name, Commands.SliceXYCommand);
-                commander.Commands.Add(Commands.MapCommand.Name, Commands.MapCommand);
+                var commands = new [] {
+                    Commands.ClearCommand,
+                    Commands.FillCommand,
+                    Commands.SetDataCommand,
+                    Commands.ReplaceCommand,
+                    Commands.SphereCommand,
+                    Commands.TorchGridCommand,
+                    Commands.DisruptCommand,
+                    Commands.SliceXYCommand,
+                    Commands.MapCommand,
+                };
 
+                foreach (var command in commands)
+                {
+                    commander.Commands.Add(command.Name, command);
+                }
 
                 if (showVersion)
                 {
