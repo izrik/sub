@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F09B9076-2D15-4DD3-AB11-7D06BF939C76}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -45,13 +45,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\NCommander\NCommander.csproj">
-      <Project>{A9E25E5D-EB90-4B4A-8793-4E9D97037E42}</Project>
-      <Name>NCommander</Name>
-    </ProjectReference>
     <ProjectReference Include="Substrate\SubstrateCS\Substrate %28NET4%29.csproj">
       <Project>{7264A1C4-AB4A-4437-B252-7379B98B5509}</Project>
       <Name>Substrate (NET4)</Name>
+    </ProjectReference>
+    <ProjectReference Include="NCommander\NCommander.csproj">
+      <Project>{A9E25E5D-EB90-4B4A-8793-4E9D97037E42}</Project>
+      <Name>NCommander</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

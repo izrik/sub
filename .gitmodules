@@ -1,3 +1,6 @@
 [submodule "Substrate"]
 	path = Substrate
 	url = https://github.com/jaquadro/Substrate.git
+[submodule "NCommander"]
+	path = NCommander
+	url = https://github.com/izrik/NCommander.git
