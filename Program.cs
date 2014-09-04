@@ -58,6 +58,29 @@ namespace sub
                     commander.Commands.Add(command.Name, command);
                 }
 
+                commander.HelpTopics["block_type_number"] = () => {
+
+                    Console.Write("block_type_number");
+
+                    var  parameterType = ParameterTypes.BlockType;
+                    if (!string.IsNullOrWhiteSpace(parameterType.Description))
+                    {
+                        Console.Write(" - {0}", parameterType.Description);
+                    }
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                    if (!string.IsNullOrWhiteSpace(parameterType.HelpText))
+                    {
+                        Console.WriteLine("The available block types are:");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine(ParameterTypes.GetListOfBlockTypes(true));
+                        Console.WriteLine();
+                    }
+                };
+
                 if (showVersion)
                 {
                     commander.ShowVersion();

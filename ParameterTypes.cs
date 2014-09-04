@@ -25,13 +25,20 @@ namespace sub
             outputType: typeof(int)
         );
 
-        static string GetListOfBlockTypes()
+        public static string GetListOfBlockTypes(bool sortByNumber=false)
         {
             var sb = new StringBuilder();
             string line = "    ";
 
             var blockTypeNames = BlockTypesByName._BlockTypesByName.Keys.ToList();
-            blockTypeNames.Sort();
+            if (sortByNumber)
+            {
+                blockTypeNames.Sort((x, y) => BlockTypesByName._BlockTypesByName[x].CompareTo(BlockTypesByName._BlockTypesByName[y]));
+            }
+            else
+            {
+                blockTypeNames.Sort();
+            }
 
             int i = 1;
             foreach (var name in blockTypeNames)
