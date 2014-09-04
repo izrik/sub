@@ -39,10 +39,11 @@ namespace sub
                 bool last = (i == (blockTypeNames.Count));
 
                 var entry = string.Format(
-                                "{0} ({1}){2}",
+                                "{0} ({1}/{3}){2}",
                                 name,
                                 BlockTypesByName._BlockTypesByName[name],
-                                (last ? "" : ", "));
+                                (last ? "" : ", "),
+                                BlockTypesByName._BlockTypesByName[name].ToString("X02"));
 
                 if (line.Length + entry.Length + 1 > 79)
                 {
