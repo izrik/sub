@@ -42,6 +42,7 @@
     <Compile Include="Commands.Slice.cs" />
     <Compile Include="Commands.Advanced.cs" />
     <Compile Include="Commands.Map.cs" />
+    <Compile Include="CreateBuildingCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

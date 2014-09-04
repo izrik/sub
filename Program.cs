@@ -51,6 +51,7 @@ namespace sub
                     Commands.SliceXYCommand,
                     Commands.MapCommand,
                     Commands.HeightMapCommand,
+                    new CreateBuildingCommand(),
                 };
 
                 foreach (var command in commands)
