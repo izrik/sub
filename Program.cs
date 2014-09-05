@@ -52,6 +52,8 @@ namespace sub
                     Commands.MapCommand,
                     Commands.HeightMapCommand,
                     new CreateBuildingCommand(),
+                    new MengerSpongeCommand(),
+                    new SierpinskiTetrahedronCommand(),
                 };
 
                 foreach (var command in commands)
