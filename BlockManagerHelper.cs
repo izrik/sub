@@ -110,6 +110,39 @@ namespace sub
         {
             FillSpace(bm, minx, maxx, y, y, minz, maxz, blockType);
         }
+
+        public static int GetHeight(this BlockManager bm, int x, int z)
+        {
+            int y;
+            for (y = 255; y >= 0; y--)
+            {
+                var id = bm.GetID(x, y, z);
+                if (id != BlockType.AIR)
+                {
+                    break;
+                }
+            }
+
+            if (y < 0) y = 0;
+
+            return y;
+        }
+
+        public static int GetBlockTypeAtSurface(this BlockManager bm, int x, int z)
+        {
+            int y;
+
+            for (y = 255; y >= 0; y--)
+            {
+                var id = bm.GetID(x, y, z);
+                if (id != BlockType.AIR)
+                {
+                    return id;
+                }
+            }
+
+            return BlockType.AIR;
+        }
     }
 }
 

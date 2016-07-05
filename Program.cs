@@ -54,6 +54,7 @@ namespace sub
                     new CreateBuildingCommand(),
                     new MengerSpongeCommand(),
                     new SierpinskiTetrahedronCommand(),
+                    new GaussianCommand(),
                 };
 
                 foreach (var command in commands)

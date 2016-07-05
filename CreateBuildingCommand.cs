@@ -35,25 +35,6 @@ namespace sub
             world.Save();
         }
 
-        public static void Main(string[] args, int asdf)
-        {
-            AnvilWorld world = AnvilWorld.Open("/Users/" + System.Environment.UserName + "/Library/Application Support/minecraft/saves/City");
-            BlockManager bm = world.GetBlockManager();
-
-            ClearSpace(bm, -12, 11, 64, 255, -12, 11);
-            GenerateOfficeBuilding(bm, -10, 9, -10, 9, 10);
-
-            ClearSpace(bm, -9, 8, 64, 255, 14, 31);
-            GenerateOfficeBuilding(bm, -8, 7, 15, 30, 16);
-
-            ClearSpace(bm, -14, 13, 64, 255, 39, 54);
-            GenerateOfficeBuilding(bm, -13, 12, 40, 53, 6);
-
-
-            world.Save();
-
-        }
-
         public static void FillSpace(BlockManager bm,
                                      int minx, int maxx,
                                      int miny, int maxy,
@@ -166,7 +147,7 @@ namespace sub
                 }
             }
 
-            FillSpace(bm, minx, maxx, miny, maxy, minz-1, maxz, BlockType.AIR, 0);
+            FillSpace(bm, minx-1, maxx+1, miny, maxy, minz-1, maxz+1, BlockType.AIR, 0);
 
             MakeFloor(bm, minx, maxx, miny - 1, minz, maxz, BlockType.QUARTZ_BLOCK);
 
